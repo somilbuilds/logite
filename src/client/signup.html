@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logite | Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            justify-content: center;
+            align-items: center;
+        }
+        .signup-card {
+            background-color: var(--bg-sidebar);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        .signup-card h2 {
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .form-group input {
+            width: 100%;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: var(--radius);
+            color: var(--text-main);
+            font-family: inherit;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+        .signup-btn {
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        .signup-btn:hover {
+            background-color: var(--accent-hover);
+        }
+        .footer-links {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-card">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="signup-username" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="signup-email" required placeholder="name@company.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="signup-password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="signup-btn">Get Started</button>
+        </form>
+        <div class="footer-links">
+            Already have an account? <a href="login.html">Sign In</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const username = document.getElementById("signup-username").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            const response = await fetch("/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+            if (response.ok) {
+                window.location.href = "login.html";
+            }
+        });
+    </script>
+</body>
+</html>

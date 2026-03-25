@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logite | Encyclopedia</title>
+    <link rel="stylesheet" href="encyclo_styles.css">
+</head>
+<body>
+    <header>
+        <a href="web.html" class="back-btn">&larr; Home</a>
+        <h1>Logic Encyclopedia</h1>
+    </header>
+
+    <main>
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('half-adder')">Half Adder</button>
+            <div class="dropdown-content" id="half-adder">
+                <p>A Half Adder is a digital circuit that performs addition of two binary digits (A and B). It produces two outputs: Sum (S) and Carry (C).</p>
+                <img src="images/basic_half.png" alt="Half Adder Basic">
+                <img src="images/xor_half.png" alt="Half Adder XOR">
+                <hr>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/aLUY-s7LSns" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('full-adder')">Full Adder</button>
+            <div class="dropdown-content" id="full-adder">
+                <p>A Full Adder adds three binary inputs: two significant bits and a carry-in from a previous addition.</p>
+                <img src="images/xor_full.png" alt="Full Adder">
+                <hr>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/RK3P9L2ZXk4" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('logic-gates')">Logic Gates</button>
+            <div class="dropdown-content" id="logic-gates">
+                <p>Logic gates are the basic building blocks of any digital system. It is an electronic circuit having one or more than one input and only one output.</p>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/INEtYZqtjTo" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('multiplexer')">Multiplexer</button>
+            <div class="dropdown-content" id="multiplexer">
+                <img src="images/mux.png" alt="Multiplexer">
+                <p>A Multiplexer (MUX) selects one of several input signals and forwards it to a single output line based on control signals.</p>
+                <hr>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/FKvnmxte98A" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleDropdown(id) {
+            const content = document.getElementById(id);
+            const isActive = content.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.dropdown-content').forEach(el => el.classList.remove('active'));
+            
+            // Toggle clicked
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
